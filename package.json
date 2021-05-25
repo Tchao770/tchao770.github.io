@@ -7,8 +7,9 @@
   "scripts": {
     "test": "jest --watch --runInBand",
     "dev": "webpack serve",
+    "build": "build",
     "webpack": "webpack",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +36,7 @@
     "sass": "^1.32.12",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.32.0",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"

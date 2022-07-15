@@ -1,21 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import About from './components/About';
-import Footer from './components/Footer';
-import Header from "./components/Header";
-import Projects from './components/Projects';
-import Skills from './components/Skills';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import About from './containers/About';
+import Header from './containers/Header';
+import Projects from './containers/Projects';
 
 export default function App() {
-    return (
-        <div>
-            <Router>
-                <Header />
-                <About />
-                <Skills />
-                <Projects />
-                <Footer />
-            </Router>
-        </div>
-    )
+	return (
+		<div>
+			<BrowserRouter>
+				<Header />
+				<About />
+				<Projects />
+				<Routes>
+					<Route path="/about" element={<About />} />
+					<Route path="/projects" element={<Projects />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
+	)
 }

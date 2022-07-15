@@ -1,0 +1,14 @@
+header {
+	background: rgb(36, 127, 238);
+	position: fixed;
+	width: 100vw;
+	top: 0;
+	.Nav {
+		display: flex;
+		justify-content: space-between;
+		width: 100vw;
+		.NavLogo {
+			width: 3rem;
+		}
+	}
+}

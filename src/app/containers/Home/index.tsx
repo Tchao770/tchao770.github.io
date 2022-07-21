@@ -1,4 +1,6 @@
 import { Button } from "@mantine/core";
+import { Clouds } from "app/components/Clouds";
+import { SunBoi } from "app/components/SunBoi";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
@@ -7,15 +9,22 @@ const HomeContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	padding-bottom: 2em;
 	background: rgba(121, 168, 224, 0.18);
 	height: 100vh;
-	.TextSection {
+	.TextContainer {
+		width: 50rem;
+		//background-color: coral;
 		text-align: left;
 	}
 
-	.BriefSection {
-		font-size: 20px;
+	.Heading {
+		//background-color: mintcream;
+		font-size: 5rem;
+		margin-bottom: 1rem;
+	}
+
+	.ShortAboutMe {
+		margin-bottom: 1rem;
 	}
 
 	.ViewProjectButton {
@@ -27,33 +36,27 @@ const HomeContainer = styled.div`
 	}
 `;
 
+const CutePortait = styled.div``;
+
 export const Home = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	useEffect(() => {
 		console.log(location);
-		if (location.pathname === "/" || location.pathname === "/home")
+		if (location.pathname === "/" || location.pathname === "/home") {
 			document
 				.getElementById("home")
 				?.scrollIntoView({ behavior: "smooth" });
+		}
 	}, [location]);
 
 	return (
 		<HomeContainer id="home">
-			<div className="TextSection">
-				<div className="BriefSection">Hi, I'm Tommy!</div>
-				<div className="AboutMe">
-					I'm a Web Developer that likes making web applications
+			<div className="TextContainer">
+				<h1 className="Heading">Hi, I'm Tommy!</h1>
+				<div className="ShortAboutMe">
+					I'm a fullstack engineer based in Los Angeles!
 				</div>
-
-				<Button
-					variant="default"
-					onClick={() => {
-						navigate("/projects");
-					}}
-				>
-					View Projects
-				</Button>
 				<Button
 					variant="default"
 					onClick={() => {
@@ -62,7 +65,19 @@ export const Home = () => {
 				>
 					About Me
 				</Button>
+				<Button
+					variant="default"
+					onClick={() => {
+						navigate("/projects");
+					}}
+				>
+					View Projects
+				</Button>
 			</div>
+			<CutePortait>
+				<SunBoi />
+				<Clouds />
+			</CutePortait>
 		</HomeContainer>
 	);
 };

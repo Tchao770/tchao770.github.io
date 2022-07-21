@@ -52,6 +52,7 @@ module.exports = {
 					!isProduction && {
 						loader: "babel-loader",
 						options: {
+							exclude: ["/node_modules"],
 							plugins: [
 								"react-refresh/babel",
 								[
@@ -85,7 +86,7 @@ module.exports = {
 			{ test: /\.(a?png|svg)$/, use: "url-loader?limit=10000" },
 			{
 				test: /\.(jpe?g|gif|bmp|mp3|mp4|ogg|wav|eot|ttf|woff|woff2)$/,
-				use: "file-loader",
+				use: { loader: 'file-loader?name=[name].[ext]' },
 			},
 			// css
 			{
@@ -143,7 +144,7 @@ module.exports = {
 	},
 
 	plugins: [
-		new BundleAnalyzerPlugin(),
+		//new BundleAnalyzerPlugin(),
 		new webpack.EnvironmentPlugin({
 			NODE_ENV: "development", // use 'development' unless process.env.NODE_ENV is defined
 			DEBUG: false,

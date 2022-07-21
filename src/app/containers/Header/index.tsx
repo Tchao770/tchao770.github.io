@@ -13,10 +13,11 @@ const Nav = styled.div`
 	justify-content: space-between;
 	position: fixed;
 	width: 100vw;
-	z-index: 99999;
+	z-index: 99;
 	transition: all 0.3s ease;
 	padding: 8px;
 	padding-top: 20px;
+	padding-left: 20px;
 	&.up {
 		top: 0px;
 	}
@@ -28,10 +29,11 @@ const Nav = styled.div`
 	}
 	&.up,
 	&.down {
-		background: rgba(106, 153, 211, 0.541);
+		background: rgba(147, 187, 236, 0.541);
 		box-shadow: 0px 0px 5px black;
 		padding: 8px;
 		backdrop-filter: blur(10px);
+		padding-left: 20px;
 	}
 `;
 

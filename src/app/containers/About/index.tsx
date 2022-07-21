@@ -7,7 +7,6 @@ const AboutContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	padding-bottom: 2em;
 	background: rgba(161, 183, 209, 0.18);
 	height: 100vh;
 	.TextSection {
@@ -39,7 +38,6 @@ const AboutContainer = styled.div`
 export const About = () => {
 	const location = useLocation();
 	useEffect(() => {
-		console.log(location);
 		if (location.pathname === "/about")
 			document
 				.getElementById("about")

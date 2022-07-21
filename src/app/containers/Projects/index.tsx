@@ -22,7 +22,6 @@ const ProjectContainer = styled.div`
 export const Projects = () => {
 	const location = useLocation();
 	useEffect(() => {
-		console.log(location);
 		if (location.pathname === "/projects")
 			document
 				.getElementById("projects")

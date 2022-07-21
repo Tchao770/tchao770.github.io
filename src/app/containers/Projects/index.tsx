@@ -1,22 +1,41 @@
 import ProjectCard from "app/components/ProjectCard.tsx";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 import styled from "styled-components";
 
 const ProjectContainer = styled.div`
 	height: 100vh;
 	display: flex;
-	justify-content: center;
-	flex-direction: row;
+	flex-direction: column;
+	align-items: center;
+
+	h1 {
+		text-align: "center";
+	}
+	.projectsContainer {
+		width: 80%;
+		display: flex;
+		justify-content: space-around;
+	}
 `;
 
 export const Projects = () => {
+	const location = useLocation();
+	useEffect(() => {
+		console.log(location);
+		if (location.pathname === "/projects")
+			document
+				.getElementById("projects")
+				?.scrollIntoView({ behavior: "smooth" });
+	}, [location]);
 	return (
-		<ProjectContainer>
+		<ProjectContainer id="projects">
 			<h1>Check out my work!</h1>
-			{Object.keys(projectData).map((key, index) => {
-				return (
-					<ProjectCard projectData={projectData[key]} key={index} />
-				);
-			})}
+			<div className="projectsContainer">
+				{Object.keys(projectData).map((key, index) => {
+					return <ProjectCard projectData={projectData[key]} />;
+				})}
+			</div>
 		</ProjectContainer>
 	);
 };

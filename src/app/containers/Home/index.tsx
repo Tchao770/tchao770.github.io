@@ -1,14 +1,14 @@
-import profileImg from "assets/profile.jpg";
+import { Button } from "@mantine/core";
 import { useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
 
-const AboutContainer = styled.div`
+const HomeContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	padding-bottom: 2em;
-	background: rgba(161, 183, 209, 0.18);
+	background: rgba(121, 168, 224, 0.18);
 	height: 100vh;
 	.TextSection {
 		text-align: left;
@@ -18,9 +18,6 @@ const AboutContainer = styled.div`
 		font-size: 20px;
 	}
 
-	.AboutMe {
-	}
-
 	.ViewProjectButton {
 		background: #79a8e0;
 		border-radius: 35px;
@@ -28,33 +25,44 @@ const AboutContainer = styled.div`
 		border: none;
 		cursor: pointer;
 	}
-	.ProfileImg {
-		width: 500px;
-		height: 500px;
-		object-fit: cover;
-		border-radius: 50%;
-	}
 `;
 
-export const About = () => {
+export const Home = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 	useEffect(() => {
 		console.log(location);
-		if (location.pathname === "/about")
+		if (location.pathname === "/" || location.pathname === "/home")
 			document
-				.getElementById("about")
+				.getElementById("home")
 				?.scrollIntoView({ behavior: "smooth" });
 	}, [location]);
 
 	return (
-		<AboutContainer id="about">
+		<HomeContainer id="home">
 			<div className="TextSection">
 				<div className="BriefSection">Hi, I'm Tommy!</div>
 				<div className="AboutMe">
 					I'm a Web Developer that likes making web applications
 				</div>
+
+				<Button
+					variant="default"
+					onClick={() => {
+						navigate("/projects");
+					}}
+				>
+					View Projects
+				</Button>
+				<Button
+					variant="default"
+					onClick={() => {
+						navigate("/about");
+					}}
+				>
+					About Me
+				</Button>
 			</div>
-			<img className="ProfileImg" src={profileImg} />
-		</AboutContainer>
+		</HomeContainer>
 	);
 };

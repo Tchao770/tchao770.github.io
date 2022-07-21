@@ -2,33 +2,64 @@ import { NavLink } from "react-router-dom";
 import logo from "assets/TC1.png";
 import styled from "styled-components";
 import { NavBar } from "app/components/NavBar";
+import { useEffect, useState } from "react";
 
 const Logo = styled.img`
 	width: 3rem;
 `;
 
-const Nav = styled.nav`
+const Nav = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 100vw;
-`;
-
-const Head = styled.header`
-	background: rgb(116, 177, 252);
 	position: fixed;
 	width: 100vw;
-	top: 0;
+	z-index: 99999;
+	transition: all 0.3s ease;
+	padding: 8px;
+	padding-top: 20px;
+	&.up {
+		top: 0px;
+	}
+	&.top {
+		top: 0px;
+	}
+	&.down {
+		top: -70px;
+	}
+	&.up,
+	&.down {
+		background: rgba(106, 153, 211, 0.541);
+		box-shadow: 0px 0px 5px black;
+		padding: 8px;
+		backdrop-filter: blur(10px);
+	}
 `;
 
 export const Header = () => {
+	const [hState, sethState] = useState("top");
+
+	useEffect(() => {
+		var lastVal = 0;
+		window.onscroll = function () {
+			let y = window.scrollY;
+			if (y > lastVal) {
+				sethState("down");
+			}
+			if (y < lastVal) {
+				sethState("up");
+			}
+			if (y === 0) {
+				sethState("top");
+			}
+			lastVal = y;
+		};
+	}, []);
 	return (
-		<Head>
-			<Nav>
-				<NavLink to="/">
-					<Logo className="NavLogo" src={logo} alt="personal-logo" />
-				</NavLink>
-				<NavBar />
-			</Nav>
-		</Head>
+		<Nav className={hState}>
+			<NavLink to="/">
+				<Logo className="NavLogo" src={logo} alt="personal-logo" />
+			</NavLink>
+			<NavBar />
+		</Nav>
 	);
 };

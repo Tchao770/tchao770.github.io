@@ -24,6 +24,7 @@ const Navigation = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-right: 1rem;
 	.LinkItem {
 		margin: 0 1em;
 		position: relative;

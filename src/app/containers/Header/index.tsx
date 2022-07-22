@@ -3,6 +3,7 @@ import logo from "assets/TC1.png";
 import styled from "styled-components";
 import { NavBar } from "app/components/NavBar";
 import { useEffect, useState } from "react";
+import { SocialMedia } from "app/components/SocialMedia";
 
 const Logo = styled.img`
 	width: 3rem;
@@ -11,6 +12,7 @@ const Logo = styled.img`
 const Nav = styled.div`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	position: fixed;
 	width: 100vw;
 	z-index: 99;
@@ -58,9 +60,18 @@ export const Header = () => {
 	}, []);
 	return (
 		<Nav className={hState}>
-			<NavLink to="/">
-				<Logo className="NavLogo" src={logo} alt="personal-logo" />
-			</NavLink>
+			<div style={{ display: "flex" }}>
+				<NavLink
+					to="/"
+					style={{
+						padding: 0,
+						margin: 0,
+					}}
+				>
+					<Logo className="NavLogo" src={logo} alt="personal-logo" />
+				</NavLink>
+				<SocialMedia />
+			</div>
 			<NavBar />
 		</Nav>
 	);

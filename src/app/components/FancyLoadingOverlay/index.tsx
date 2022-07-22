@@ -42,7 +42,7 @@ const CloudRight = styled.div`
 	width: 50%;
 	background-color: white;
 	right: -0px;
-	transition: ease-out 5s;
+	transition: ease-out 6s;
 	animation: right 5s;
 	animation-delay: 1s;
 	animation-timing-function: ease-out;

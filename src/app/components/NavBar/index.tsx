@@ -41,7 +41,6 @@ const Navigation = styled.div`
 			visibility: visible;
 			transform: scaleX(1);
 		}
-
 		&:before {
 			content: "";
 			position: absolute;

@@ -1,9 +1,11 @@
 import profileImg from "assets/profile.jpg";
+import birds from "assets/flock.svg";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
 
 const AboutContainer = styled.div`
+	position: relative;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -13,11 +15,16 @@ const AboutContainer = styled.div`
 		text-align: left;
 	}
 
-	.BriefSection {
-		font-size: 20px;
+	.AboutMeHeader {
+		font-size: 25px;
+		padding-bottom: 1rem;
 	}
 
-	.AboutMe {
+	.AboutWork {
+		width: 20rem;
+	}
+	.AboutFreeTime {
+		width: 20rem;
 	}
 
 	.ViewProjectButton {
@@ -35,6 +42,13 @@ const AboutContainer = styled.div`
 	}
 `;
 
+const Birds = styled.img`
+	position: absolute;
+	width: 20rem;
+	top: 0;
+	padding-top: 5rem;
+`;
+
 export const About = () => {
 	const location = useLocation();
 	useEffect(() => {
@@ -47,12 +61,21 @@ export const About = () => {
 	return (
 		<AboutContainer id="about">
 			<div className="TextSection">
-				<div className="BriefSection">Hi, I'm Tommy!</div>
-				<div className="AboutMe">
-					I'm a Web Developer that likes making web applications
+				<div className="AboutMeHeader">About Me</div>
+				<div className="AboutWork">
+					My name is Tommy and I'm a full stack developer based in Los
+					Angeles. I love learning new technologies, writing elegant
+					code, and making both appealing and responsive websites.
+				</div>
+				<div className="AboutFreeTime">
+					When I'm not building websites and technologies, my passion
+					for working on something extends to my hobbies as well. On
+					my free time I enjoy cooking, playing games, and building
+					things such as LEGO or furniture.
 				</div>
 			</div>
 			<img className="ProfileImg" src={profileImg} />
+			<Birds src={birds} />
 		</AboutContainer>
 	);
 };

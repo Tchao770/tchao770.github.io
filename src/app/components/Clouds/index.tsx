@@ -6,7 +6,7 @@ const CloudStyles = styled.div`
 	height: 100px;
 	border-radius: 150px;
 	box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
-	animation: move 3s infinite;
+	animation: move 2.5s infinite;
 
 	&:after {
 		content: "";

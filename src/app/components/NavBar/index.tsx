@@ -1,5 +1,7 @@
+import { Button } from "@mantine/core";
 import { NavHashLink } from "react-router-hash-link";
 import styled from "styled-components";
+import resume from "assets/TommyChao.pdf";
 
 const urls = [
 	{
@@ -24,13 +26,13 @@ const Navigation = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-right: 2rem;
+	margin-right: 4rem;
 	.LinkItem {
 		margin: 0 1em;
 		position: relative;
 		text-decoration: none;
 		color: black;
-		font-size: 25px;
+		font-size: 1.5rem;
 		&.active:before {
 			content: "";
 			width: 100%;
@@ -82,6 +84,12 @@ export const NavBar = () => {
 					</NavHashLink>
 				);
 			})}
+			<Button
+				variant="outline"
+				onClick={() => window.open(resume, "_blank")}
+			>
+				Resume
+			</Button>
 		</Navigation>
 	);
 };

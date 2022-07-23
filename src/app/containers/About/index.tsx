@@ -9,7 +9,8 @@ const AboutContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	background: rgba(161, 183, 209, 0.18);
+	background: rgba(100, 155, 219, 0.18);
+
 	height: 100vh;
 	.TextSection {
 		text-align: left;
@@ -39,6 +40,40 @@ const AboutContainer = styled.div`
 		height: 500px;
 		object-fit: cover;
 		border-radius: 50%;
+		transition: 0.5s ease-out;
+		display: block;
+	}
+	.overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border-radius: 50%;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+		transition: 0.5s ease;
+	}
+	.container {
+		position: relative;
+		width: auto;
+	}
+	.container:hover .overlay {
+		background-color: rgba(100, 155, 219, 0.18);
+		.text {
+			color: rgba(255, 255, 255, 1);
+		}
+	}
+	.text {
+		white-space: nowrap;
+		color: rgba(255, 255, 255, 0);
+		font-size: 20px;
+		position: absolute;
+		overflow: hidden;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: 0.5s ease;
 	}
 `;
 
@@ -74,7 +109,12 @@ export const About = () => {
 					things such as LEGO or furniture.
 				</div>
 			</div>
-			<img className="ProfileImg" src={profileImg} />
+			<div className="container">
+				<img className="ProfileImg" src={profileImg} />
+				<div className="overlay">
+					<div className="text">It's a me, Tommy</div>
+				</div>
+			</div>
 			<Birds src={birds} />
 		</AboutContainer>
 	);

@@ -9,7 +9,7 @@ const HomeContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	background: rgba(121, 168, 224, 0.18);
+	background: rgba(80,141,214, 0.18);
 	height: 100vh;
 	.TextContainer {
 		width: 50rem;

@@ -1,24 +1,23 @@
 import { Button } from "@mantine/core";
-import { Clouds } from "app/components/Clouds";
-import { SunBoi } from "app/components/SunBoi";
+import { Content } from "app/components/PageContentWrapper";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
+
+import sun from "assets/sun.svg";
+import cloud from "assets/cloud.svg";
 import styled from "styled-components";
 
-const HomeContainer = styled.div`
+const HomePage = styled.div`
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
-	background: rgba(80,141,214, 0.18);
+	background: rgba(80, 141, 214, 0.18);
 	height: 100vh;
-	.TextContainer {
-		width: 50rem;
-		//background-color: coral;
-		text-align: left;
-	}
+	width: 100vw;
+`;
 
+const TextContent = styled.div`
 	.Heading {
-		//background-color: mintcream;
 		font-size: 5rem;
 		margin-bottom: 1rem;
 	}
@@ -36,7 +35,22 @@ const HomeContainer = styled.div`
 	}
 `;
 
-const CutePortait = styled.div``;
+const SkyObjects = styled.div`
+	position: relative;
+	align-items: flex-end;
+	display: flex;
+`;
+
+const Sun = styled.img`
+	position: absolute;
+	top: 0;
+	overflow: visible;
+	max-width: 200px;
+`;
+const Cloud = styled.img`
+	width: 300px;
+	filter: drop-shadow(3px 5px 1px rgb(0 0 0 / 0.4));
+`;
 
 export const Home = () => {
 	const location = useLocation();
@@ -51,33 +65,35 @@ export const Home = () => {
 	}, [location]);
 
 	return (
-		<HomeContainer id="home">
-			<div className="TextContainer">
-				<h1 className="Heading">Hi, I'm Tommy!</h1>
-				<div className="ShortAboutMe">
-					I'm a fullstack engineer based in Los Angeles!
-				</div>
-				<Button
-					variant="default"
-					onClick={() => {
-						navigate("/about");
-					}}
-				>
-					About Me
-				</Button>
-				<Button
-					variant="default"
-					onClick={() => {
-						navigate("/projects");
-					}}
-				>
-					View Projects
-				</Button>
-			</div>
-			<CutePortait>
-				<SunBoi />
-				<Clouds />
-			</CutePortait>
-		</HomeContainer>
+		<HomePage id="home">
+			<Content direction="row">
+				<TextContent>
+					<h1 className="Heading">Hi, I'm Tommy!</h1>
+					<div className="ShortAboutMe">
+						I'm a fullstack engineer based in Los Angeles!
+					</div>
+					<Button
+						variant="default"
+						onClick={() => {
+							navigate("/about");
+						}}
+					>
+						About Me
+					</Button>
+					<Button
+						variant="default"
+						onClick={() => {
+							navigate("/projects");
+						}}
+					>
+						View Projects
+					</Button>
+				</TextContent>
+				<SkyObjects>
+					<Sun src={sun} />
+					<Cloud src={cloud} />
+				</SkyObjects>
+			</Content>
+		</HomePage>
 	);
 };

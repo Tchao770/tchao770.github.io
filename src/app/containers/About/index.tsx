@@ -110,7 +110,6 @@ export const About = () => {
 				</div>
 			</div>
 			<div className="container">
-				<img className="ProfileImg" src={profileImg} />
 				<div className="overlay">
 					<div className="text">It's a me, Tommy</div>
 				</div>
@@ -119,3 +118,5 @@ export const About = () => {
 		</AboutContainer>
 	);
 };
+
+//<img className="ProfileImg" src={profileImg} />

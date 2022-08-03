@@ -18,7 +18,7 @@ export const SocialMedia = () => {
 			>
 				<img src={gh} alt="github" />
 			</a>
-			<a href="https://www.linkedin.com/in/tchao770/">
+			<a href="https://www.linkedin.com/in/tchao770/" target="_blank">
 				<img src={li} alt="instagram" />
 			</a>
 		</SocialMediaContainer>

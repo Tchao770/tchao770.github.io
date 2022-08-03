@@ -2,6 +2,8 @@ import { Button } from "@mantine/core";
 import { NavHashLink } from "react-router-hash-link";
 import styled from "styled-components";
 import resume from "assets/TommyChao.pdf";
+import detectOutsideClick from "app/hooks/outsideClick";
+import { MouseEvent, useEffect, useRef } from "react";
 
 const urls = [
 	{
@@ -60,36 +62,231 @@ const Navigation = styled.div`
 			transform: scaleX(1);
 		}
 	}
+	@media only screen and (max-width: 750px) {
+		display: none;
+	}
 `;
 
 export const NavBar = () => {
 	return (
-		<Navigation>
-			{urls.map((item, index) => {
-				return (
-					<NavHashLink
-						key={index}
-						to={item.url}
-						className={({ isActive }) =>
-							isActive ? "LinkItem active" : "LinkItem"
-						}
-						scroll={(el) =>
-							el.scrollIntoView({
-								behavior: "auto",
-								block: "end",
-							})
-						}
-					>
-						{item.title}
-					</NavHashLink>
-				);
-			})}
-			<Button
-				variant="outline"
-				onClick={() => window.open(resume, "_blank")}
-			>
-				Resume
-			</Button>
-		</Navigation>
+		<>
+			<MenuToggle />
+			<Navigation>
+				{urls.map((item, index) => {
+					return (
+						<NavHashLink
+							key={index}
+							to={item.url}
+							className={({ isActive }) =>
+								isActive ? "LinkItem active" : "LinkItem"
+							}
+							scroll={(el) =>
+								el.scrollIntoView({
+									behavior: "auto",
+									block: "end",
+								})
+							}
+						>
+							{item.title}
+						</NavHashLink>
+					);
+				})}
+				<Button
+					variant="outline"
+					onClick={() => window.open(resume, "_blank")}
+				>
+					Resume
+				</Button>
+			</Navigation>
+		</>
+	);
+};
+
+const MobileNav = styled.div`
+	.menuToggle {
+		display: none;
+		position: relative;
+		right: 20px;
+		z-index: 1;
+
+		-webkit-user-select: none;
+		user-select: none;
+		a {
+			text-decoration: none;
+			color: #232323;
+
+			transition: color 0.3s ease;
+		}
+		a:hover {
+			color: tomato;
+		}
+		input {
+			display: block;
+			width: 40px;
+			height: 32px;
+			position: absolute;
+			top: -7px;
+			left: -5px;
+
+			cursor: pointer;
+
+			opacity: 0;
+			z-index: 2;
+
+			-webkit-touch-callout: none;
+			&:checked ~ span {
+				opacity: 1;
+				transform: rotate(45deg) translate(-2px, -1px);
+				background: #232323;
+			}
+			&:checked ~ span:nth-last-child(3) {
+				opacity: 0;
+				transform: rotate(0deg) scale(0.2, 0.2);
+			}
+			&:checked ~ span:nth-last-child(2) {
+				transform: rotate(-45deg) translate(0, -1px);
+			}
+			&:checked ~ ul {
+				transform: none;
+			}
+		}
+		span {
+			display: block;
+			width: 33px;
+			height: 4px;
+			margin-bottom: 5px;
+			position: relative;
+
+			background: #000000;
+			border-radius: 3px;
+
+			z-index: 1;
+
+			transform-origin: 4px 0px;
+
+			transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+				background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+				opacity 0.55s ease;
+			&:first-child {
+				transform-origin: 0% 0%;
+			}
+			&:nth-last-child(2) {
+				transform-origin: 0% 100%;
+			}
+		}
+		.menu {
+			overflow: hidden;
+			position: absolute;
+			width: 300px;
+			margin: -100px 0 0 -200px;
+			padding: 50px;
+			padding-top: 125px;
+			height: 100vh;
+			background: #ededed;
+			list-style-type: none;
+			-webkit-font-smoothing: antialiased;
+
+			transform-origin: 0% 0%;
+			transform: translate(200%, 0);
+
+			transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+			li {
+				padding: 10px 0;
+				font-size: 22px;
+			}
+		}
+	}
+	@media only screen and (max-width: 750px) {
+		.menuToggle {
+			display: block;
+		}
+	}
+`;
+
+const MenuToggle = () => {
+	const navRef = useRef(null);
+	const outsideClick = detectOutsideClick(navRef);
+
+	useEffect(() => {
+		const input = document.getElementById(
+			"mobileNavButton"
+		) as HTMLInputElement;
+
+		const overlay = document.getElementById("blurred");
+		if (outsideClick && input && overlay) {
+			input.checked = false;
+			overlay.classList.remove("blurred");
+		}
+	}, [outsideClick]);
+
+	const handleNavClick = (event: MouseEvent) => {
+		const isChecked = (event.target as HTMLInputElement).checked;
+
+		const overlay = document.getElementById("blurred");
+		if (overlay) {
+			isChecked
+				? overlay.classList.add("blurred")
+				: overlay.classList.remove("blurred");
+		}
+	};
+
+	return (
+		<MobileNav id="mobileNav" ref={navRef}>
+			<div className="menuToggle">
+				<input
+					id="mobileNavButton"
+					type="checkbox"
+					onClick={handleNavClick}
+				/>
+				<span />
+				<span />
+				<span />
+				<ul className="menu">
+					{urls.map((item, index) => {
+						return (
+							<li>
+								<NavHashLink
+									key={index}
+									to={item.url}
+									className={({ isActive }) =>
+										isActive
+											? "LinkItem active"
+											: "LinkItem"
+									}
+									scroll={(el) =>
+										el.scrollIntoView({
+											behavior: "auto",
+											block: "end",
+										})
+									}
+									onClick={() => {
+										const input = document.getElementById(
+											"mobileNavButton"
+										) as HTMLInputElement;
+
+										const overlay =
+											document.getElementById("blurred");
+										if (input && overlay) {
+											input.checked = false;
+											overlay.classList.remove("blurred");
+										}
+									}}
+								>
+									{item.title}
+								</NavHashLink>
+							</li>
+						);
+					})}
+					<li>
+						<Button
+							variant="outline"
+							onClick={() => window.open(resume, "_blank")}
+						>
+							Resume
+						</Button>
+					</li>
+				</ul>
+			</div>
+		</MobileNav>
 	);
 };

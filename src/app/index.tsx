@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Route, Routes, useLocation } from "react-router";
+import styled from "styled-components";
 import { FancyLoadingOverlay } from "./components/FancyLoadingOverlay";
 import { SocialMedia } from "./components/SocialMedia";
 import { About } from "./containers/About";
@@ -19,6 +20,7 @@ export const App = () => {
 	//<FancyLoadingOverlay />
 	return (
 		<>
+			<BlurOverlay id="blurred"/>
 			<Header />
 			<Home />
 			<About />
@@ -35,6 +37,17 @@ export const App = () => {
 	);
 };
 
+const BlurOverlay = styled.div`
+	position: fixed;
+	z-index: 9;
+	height: 100vh;
+	width: 100%;
+	&.blurred {
+		transition: all 0.6s ease !important;
+		background-color: #7a7a7a7f;
+		backdrop-filter: blur(5px);
+	}
+`;
 const monochromeBlue = [
 	"59, 128, 210",
 	"80, 141, 214",

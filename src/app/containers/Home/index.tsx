@@ -33,12 +33,20 @@ const TextContent = styled.div`
 		border: none;
 		cursor: pointer;
 	}
+	@media only screen and (max-width: 800px){
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 `;
 
 const SkyObjects = styled.div`
 	position: relative;
 	align-items: flex-end;
 	display: flex;
+	@media only screen and (max-width: 800px){
+		margin-top: 40px;
+	}
 `;
 
 const Sun = styled.img`
@@ -72,22 +80,24 @@ export const Home = () => {
 					<div className="ShortAboutMe">
 						I'm a fullstack engineer based in Los Angeles!
 					</div>
-					<Button
-						variant="default"
-						onClick={() => {
-							navigate("/about");
-						}}
-					>
-						About Me
-					</Button>
-					<Button
-						variant="default"
-						onClick={() => {
-							navigate("/projects");
-						}}
-					>
-						View Projects
-					</Button>
+					<div>
+						<Button
+							variant="default"
+							onClick={() => {
+								navigate("/about");
+							}}
+						>
+							About Me
+						</Button>
+						<Button
+							variant="default"
+							onClick={() => {
+								navigate("/projects");
+							}}
+						>
+							View Projects
+						</Button>
+					</div>
 				</TextContent>
 				<SkyObjects>
 					<Sun src={sun} />

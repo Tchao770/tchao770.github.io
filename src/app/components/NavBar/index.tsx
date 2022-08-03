@@ -22,7 +22,7 @@ const urls = [
 		title: "Contact Me",
 		url: "/contact",
 	},
-];
+];``
 
 const Navigation = styled.div`
 	ul {
@@ -86,9 +86,10 @@ const NavItems = () => {
 		<ul className="menu">
 			{urls.map((item, index) => {
 				return (
-					<li>
+					<li
+						key={index}
+					>
 						<NavHashLink
-							key={index}
 							to={item.url}
 							className={({ isActive }) =>
 								isActive ? "LinkItem active" : "LinkItem"
@@ -130,7 +131,6 @@ const MobileNav = styled.div`
 		position: relative;
 		right: 40px;
 		z-index: 1;
-
 		-webkit-user-select: none;
 		user-select: none;
 		a {
@@ -154,7 +154,7 @@ const MobileNav = styled.div`
 
 			opacity: 0;
 			z-index: 2;
-
+			-webkit-tap-highlight-color: transparent;
 			-webkit-touch-callout: none;
 			&:checked ~ span {
 				opacity: 1;
@@ -212,7 +212,7 @@ const MobileNav = styled.div`
 			transform: translate(200%, 0);
 
 			transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-			li {
+			li:not(:last-child) {
 				padding: 10px 0;
 				font-size: 22px;
 			}

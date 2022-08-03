@@ -9,6 +9,7 @@ export const Content = styled.div<ContentProps>`
 	display: flex;
 	flex-direction: ${(props) => props.direction};
 	justify-content: space-between;
+	align-items: center;
 	background-color: white;
 	@media only screen and (max-width: 750px) {
 		background-color: rgba(0,0,0,0);

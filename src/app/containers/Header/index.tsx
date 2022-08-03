@@ -26,7 +26,7 @@ const Nav = styled.div`
 		top: 0px;
 	}
 	&.down {
-		top: -70px;
+		top: -90px;
 	}
 	&.up,
 	&.down {
@@ -59,7 +59,7 @@ export const Header = () => {
 	}, []);
 	return (
 		<Nav className={hState}>
-			<div style={{ display: "flex" }}>
+			<div style={{ display: "flex", marginTop: ".5rem" }}>
 				<NavLink
 					to="/"
 					style={{

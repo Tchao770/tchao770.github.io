@@ -3,6 +3,7 @@ import birds from "assets/flock.svg";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
+import { Content } from "app/components/PageContentWrapper";
 
 const AboutContainer = styled.div`
 	position: relative;
@@ -35,8 +36,8 @@ const AboutContainer = styled.div`
 		cursor: pointer;
 	}
 	.ProfileImg {
-		width: 500px;
-		height: 500px;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 		border-radius: 50%;
 		transition: 0.5s ease-out;
@@ -55,7 +56,10 @@ const AboutContainer = styled.div`
 	}
 	.container {
 		position: relative;
-		width: auto;
+		width: 90vw;
+		height: 90vw;
+		max-width:500px;
+		max-height:500px;
 	}
 	.container:hover .overlay {
 		background-color: rgba(100, 155, 219, 0.18);
@@ -73,6 +77,12 @@ const AboutContainer = styled.div`
 		left: 50%;
 		transform: translate(-50%, -50%);
 		transition: 0.5s ease;
+	}
+	@media only screen and (max-width: 800px){
+		.ProfileImg{
+			width: 100%;
+			height: 100%;
+		}
 	}
 `;
 
@@ -94,28 +104,29 @@ export const About = () => {
 
 	return (
 		<AboutContainer id="about">
-			<div className="TextSection">
-				<div className="AboutMeHeader">About Me</div>
-				<div className="AboutWork">
-					My name is Tommy and I'm a full stack developer based in Los
-					Angeles. I love learning new technologies, writing elegant
-					code, and making both appealing and responsive websites.
+			<Content direction="row">
+				<div className="TextSection">
+					<div className="AboutMeHeader">About Me</div>
+					<div className="AboutWork">
+						My name is Tommy and I'm a full stack developer based in Los
+						Angeles. I love learning new technologies, writing elegant
+						code, and making both appealing and responsive websites.
+					</div>
+					<div className="AboutFreeTime">
+						When I'm not building websites and technologies, my passion
+						for working on something extends to my hobbies as well. On
+						my free time I enjoy cooking, playing games, and building
+						things such as LEGO or furniture.
+					</div>
 				</div>
-				<div className="AboutFreeTime">
-					When I'm not building websites and technologies, my passion
-					for working on something extends to my hobbies as well. On
-					my free time I enjoy cooking, playing games, and building
-					things such as LEGO or furniture.
+				<div className="container">
+					<img className="ProfileImg" src={profileImg} />
+					<div className="overlay">
+						<div className="text">It's a me, Tommy</div>
+					</div>
 				</div>
-			</div>
-			<div className="container">
-				<div className="overlay">
-					<div className="text">It's a me, Tommy</div>
-				</div>
-			</div>
+			</Content>
 			<Birds src={birds} />
 		</AboutContainer>
 	);
 };
-
-//<img className="ProfileImg" src={profileImg} />

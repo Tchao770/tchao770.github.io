@@ -5,7 +5,7 @@ import { useLocation } from "react-router";
 import styled from "styled-components";
 
 const ProjectSection = styled.div`
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -38,7 +38,6 @@ export const Projects = () => {
 				{Object.keys(projectData).map((key, index) => {
 					return (
 						<Grid.Col
-							span={4}
 							style={{
 								display: "flex",
 								justifyContent: "center",

@@ -12,6 +12,7 @@ const imgObj: any = {
 };
 
 const CardContainer = styled(Card)`
+width: 25vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -24,8 +25,8 @@ const CardContainer = styled(Card)`
 		text-align: center;
 	}
 	.imageContainer {
-		width: 30rem;
-		height: 30rem;
+		width: 100%;
+		height: auto;
 		object-fit: contain;
 		user-select: none;
 		-webkit-user-drag: none;

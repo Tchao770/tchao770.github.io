@@ -10,7 +10,6 @@ const AboutContainer = styled.div`
 	justify-content: space-evenly;
 	align-items: center;
 	background: rgba(100, 155, 219, 0.18);
-
 	height: 100vh;
 	.TextSection {
 		text-align: left;

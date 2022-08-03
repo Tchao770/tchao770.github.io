@@ -25,10 +25,13 @@ const urls = [
 ];
 
 const Navigation = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-right: 4rem;
+	ul {
+		margin-right: 4rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		list-style: none;
+	}
 	.LinkItem {
 		margin: 0 1em;
 		position: relative;
@@ -62,7 +65,7 @@ const Navigation = styled.div`
 			transform: scaleX(1);
 		}
 	}
-	@media only screen and (max-width: 750px) {
+	@media only screen and (max-width: 800px) {
 		display: none;
 	}
 `;
@@ -72,8 +75,18 @@ export const NavBar = () => {
 		<>
 			<MenuToggle />
 			<Navigation>
-				{urls.map((item, index) => {
-					return (
+				<NavItems />
+			</Navigation>
+		</>
+	);
+};
+
+const NavItems = () => {
+	return (
+		<ul className="menu">
+			{urls.map((item, index) => {
+				return (
+					<li>
 						<NavHashLink
 							key={index}
 							to={item.url}
@@ -86,19 +99,28 @@ export const NavBar = () => {
 									block: "end",
 								})
 							}
+							onClick={() => {
+								const input = document.getElementById(
+									"mobileNavButton"
+								) as HTMLInputElement;
+								input.checked = false;
+								handlePageBehavior(false);
+							}}
 						>
 							{item.title}
 						</NavHashLink>
-					);
-				})}
+					</li>
+				);
+			})}
+			<li>
 				<Button
 					variant="outline"
 					onClick={() => window.open(resume, "_blank")}
 				>
 					Resume
 				</Button>
-			</Navigation>
-		</>
+			</li>
+		</ul>
 	);
 };
 
@@ -106,7 +128,7 @@ const MobileNav = styled.div`
 	.menuToggle {
 		display: none;
 		position: relative;
-		right: 20px;
+		right: 40px;
 		z-index: 1;
 
 		-webkit-user-select: none;
@@ -126,7 +148,7 @@ const MobileNav = styled.div`
 			height: 32px;
 			position: absolute;
 			top: -7px;
-			left: -5px;
+			left: -10px;
 
 			cursor: pointer;
 
@@ -196,12 +218,25 @@ const MobileNav = styled.div`
 			}
 		}
 	}
-	@media only screen and (max-width: 750px) {
+	@media only screen and (max-width: 800px) {
 		.menuToggle {
 			display: block;
 		}
 	}
 `;
+
+function handlePageBehavior(isNavOpen: boolean) {
+	const body = document.querySelector("body");
+	const overlay = document.getElementById("blurred");
+
+	if (isNavOpen) {
+		overlay!.classList.add("blurred");
+		body!.style.overflow = "hidden";
+	} else {
+		body!.style.overflow = "visible";
+		overlay!.classList.remove("blurred");
+	}
+}
 
 const MenuToggle = () => {
 	const navRef = useRef(null);
@@ -211,23 +246,15 @@ const MenuToggle = () => {
 		const input = document.getElementById(
 			"mobileNavButton"
 		) as HTMLInputElement;
-
-		const overlay = document.getElementById("blurred");
-		if (outsideClick && input && overlay) {
+		if (outsideClick) {
 			input.checked = false;
-			overlay.classList.remove("blurred");
+			handlePageBehavior(false);
 		}
 	}, [outsideClick]);
 
 	const handleNavClick = (event: MouseEvent) => {
 		const isChecked = (event.target as HTMLInputElement).checked;
-
-		const overlay = document.getElementById("blurred");
-		if (overlay) {
-			isChecked
-				? overlay.classList.add("blurred")
-				: overlay.classList.remove("blurred");
-		}
+		handlePageBehavior(isChecked);
 	};
 
 	return (
@@ -241,51 +268,7 @@ const MenuToggle = () => {
 				<span />
 				<span />
 				<span />
-				<ul className="menu">
-					{urls.map((item, index) => {
-						return (
-							<li>
-								<NavHashLink
-									key={index}
-									to={item.url}
-									className={({ isActive }) =>
-										isActive
-											? "LinkItem active"
-											: "LinkItem"
-									}
-									scroll={(el) =>
-										el.scrollIntoView({
-											behavior: "auto",
-											block: "end",
-										})
-									}
-									onClick={() => {
-										const input = document.getElementById(
-											"mobileNavButton"
-										) as HTMLInputElement;
-
-										const overlay =
-											document.getElementById("blurred");
-										if (input && overlay) {
-											input.checked = false;
-											overlay.classList.remove("blurred");
-										}
-									}}
-								>
-									{item.title}
-								</NavHashLink>
-							</li>
-						);
-					})}
-					<li>
-						<Button
-							variant="outline"
-							onClick={() => window.open(resume, "_blank")}
-						>
-							Resume
-						</Button>
-					</li>
-				</ul>
+				<NavItems />
 			</div>
 		</MobileNav>
 	);

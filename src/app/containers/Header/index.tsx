@@ -18,6 +18,7 @@ const Nav = styled.div`
 	z-index: 10;
 	transition: all 0.3s ease;
 	padding-top: 20px;
+	padding-left: 20px;
 	&.up {
 		top: 0px;
 	}

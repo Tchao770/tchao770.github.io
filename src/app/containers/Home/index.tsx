@@ -33,10 +33,13 @@ const TextContent = styled.div`
 		border: none;
 		cursor: pointer;
 	}
-	@media only screen and (max-width: 800px){
+	@media only screen and (max-width: 800px) {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		.Heading {
+			text-align: center;
+		}
 	}
 `;
 
@@ -44,7 +47,7 @@ const SkyObjects = styled.div`
 	position: relative;
 	align-items: flex-end;
 	display: flex;
-	@media only screen and (max-width: 800px){
+	@media only screen and (max-width: 800px) {
 		margin-top: 40px;
 	}
 `;

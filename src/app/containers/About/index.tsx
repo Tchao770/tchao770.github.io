@@ -91,6 +91,9 @@ const Birds = styled.img`
 	width: 20rem;
 	top: 0;
 	padding-top: 5rem;
+	@media only screen and (max-width: 800px) {
+		display: none;
+	}
 `;
 
 export const About = () => {

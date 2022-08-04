@@ -1,6 +1,5 @@
 import { useForm, ValidationError } from "@formspree/react";
 import { Button, Textarea, TextInput } from "@mantine/core";
-import React from "react";
 
 export const ContactForm = () => {
 	const [state, handleSubmit] = useForm("moqrgkdp");
@@ -8,7 +7,10 @@ export const ContactForm = () => {
 		return <p>Thanks for reaching out! I'll reply soon :D</p>;
 	}
 	return (
-		<form onSubmit={handleSubmit} style={{ width: "30rem" }}>
+		<form
+			onSubmit={handleSubmit}
+			style={{ maxWidth: "40rem", width: "90%" }}
+		>
 			<TextInput
 				id="email"
 				type="email"

@@ -58,8 +58,8 @@ const AboutContainer = styled.div`
 		position: relative;
 		width: 90vw;
 		height: 90vw;
-		max-width:500px;
-		max-height:500px;
+		max-width: 500px;
+		max-height: 500px;
 	}
 	.container:hover .overlay {
 		background-color: rgba(100, 155, 219, 0.18);
@@ -78,8 +78,8 @@ const AboutContainer = styled.div`
 		transform: translate(-50%, -50%);
 		transition: 0.5s ease;
 	}
-	@media only screen and (max-width: 800px){
-		.ProfileImg{
+	@media only screen and (max-width: 800px) {
+		.ProfileImg {
 			width: 100%;
 			height: 100%;
 		}
@@ -108,15 +108,16 @@ export const About = () => {
 				<div className="TextSection">
 					<div className="AboutMeHeader">About Me</div>
 					<div className="AboutWork">
-						My name is Tommy and I'm a full stack developer based in Los
-						Angeles. I love learning new technologies, writing elegant
-						code, and making both appealing and responsive websites.
+						My name is Tommy and I'm a full stack developer based in
+						Los Angeles. I love learning new technologies, writing
+						elegant code, and making both appealing and responsive
+						websites.
 					</div>
 					<div className="AboutFreeTime">
-						When I'm not building websites and technologies, my passion
-						for working on something extends to my hobbies as well. On
-						my free time I enjoy cooking, playing games, and building
-						things such as LEGO or furniture.
+						When I'm not building websites and technologies, my
+						passion for working on something extends to my hobbies
+						as well. On my free time I enjoy cooking, playing games,
+						and building things such as LEGO or furniture.
 					</div>
 				</div>
 				<div className="container">

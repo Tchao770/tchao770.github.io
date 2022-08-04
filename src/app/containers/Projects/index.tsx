@@ -5,7 +5,7 @@ import { useLocation } from "react-router";
 import styled from "styled-components";
 
 const ProjectSection = styled.div`
-	min-height: 100vh;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -21,7 +21,18 @@ const ProjectSection = styled.div`
 	} */
 `;
 
-const ProjectContainer = styled(Grid)``;
+const ProjectContainer = styled.div`
+	display: flex;
+	justify-content: space-around;
+	width: 90%;
+	height: 75vh;
+	max-width: 1500px;
+	@media only screen and (max-width: 800px) {
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+`;
 
 export const Projects = () => {
 	const location = useLocation();
@@ -34,18 +45,9 @@ export const Projects = () => {
 	return (
 		<ProjectSection id="projects">
 			<h1>Some of my work</h1>
-			<ProjectContainer className="projectsContainer">
+			<ProjectContainer>
 				{Object.keys(projectData).map((key, index) => {
-					return (
-						<Grid.Col
-							style={{
-								display: "flex",
-								justifyContent: "center",
-							}}
-						>
-							<ProjectCard projectData={projectData[key]} />
-						</Grid.Col>
-					);
+					return <ProjectCard projectData={projectData[key]} />;
 				})}
 			</ProjectContainer>
 		</ProjectSection>

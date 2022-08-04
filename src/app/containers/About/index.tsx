@@ -35,13 +35,26 @@ const AboutContainer = styled.div`
 		border: none;
 		cursor: pointer;
 	}
-	.ProfileImg {
+	.container {
+		position: relative;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
-		border-radius: 50%;
-		transition: 0.5s ease-out;
-		display: block;
+		max-width: 500px;
+		max-height: 500px;
+		.ProfileImg {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 50%;
+			transition: 0.5s ease-out;
+			display: block;
+		}
+	}
+	.container:hover .overlay {
+		background-color: rgba(100, 155, 219, 0.18);
+		.text {
+			color: rgba(255, 255, 255, 1);
+		}
 	}
 	.overlay {
 		position: absolute;
@@ -53,19 +66,6 @@ const AboutContainer = styled.div`
 		width: 100%;
 		height: 100%;
 		transition: 0.5s ease;
-	}
-	.container {
-		position: relative;
-		width: 90vw;
-		height: 90vw;
-		max-width: 500px;
-		max-height: 500px;
-	}
-	.container:hover .overlay {
-		background-color: rgba(100, 155, 219, 0.18);
-		.text {
-			color: rgba(255, 255, 255, 1);
-		}
 	}
 	.text {
 		white-space: nowrap;

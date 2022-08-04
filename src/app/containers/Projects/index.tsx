@@ -13,19 +13,12 @@ const ProjectSection = styled.div`
 	h1 {
 		text-align: "center";
 	}
-	/* .projectsContainer {
-		width: 80%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	} */
 `;
 
 const ProjectContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
 	width: 90%;
-	height: 75vh;
 	max-width: 1500px;
 	@media only screen and (max-width: 800px) {
 		flex-direction: column;

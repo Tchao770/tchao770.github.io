@@ -67,7 +67,6 @@ export const Home = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	useEffect(() => {
-		console.log(location);
 		if (location.pathname === "/" || location.pathname === "/home") {
 			document
 				.getElementById("home")

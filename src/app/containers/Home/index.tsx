@@ -7,13 +7,59 @@ import sun from "assets/sun.svg";
 import cloud from "assets/cloud.svg";
 import styled from "styled-components";
 
+export const Home = () => {
+	const location = useLocation();
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (location.pathname === "/" || location.pathname === "/home") {
+			document
+				.getElementById("home")
+				?.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [location]);
+
+	return (
+		<HomePage id="home">
+			<Content direction="row">
+				<TextContent>
+					<h1 className="Heading">Hi, I'm Tommy!</h1>
+					<div className="ShortAboutMe">
+						I'm a fullstack engineer based in Los Angeles!
+					</div>
+					<div>
+						<Button
+							variant="default"
+							onClick={() => {
+								navigate("/about");
+							}}
+						>
+							About Me
+						</Button>
+						<Button
+							variant="default"
+							onClick={() => {
+								navigate("/projects");
+							}}
+						>
+							View Projects
+						</Button>
+					</div>
+				</TextContent>
+				<SkyObjects>
+					<Sun src={sun} />
+					<Cloud src={cloud} />
+				</SkyObjects>
+			</Content>
+		</HomePage>
+	);
+};
+
 const HomePage = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: rgba(80, 141, 214, 0.18);
 	height: 100vh;
-	width: 100vw;
 `;
 
 const TextContent = styled.div`
@@ -62,50 +108,3 @@ const Cloud = styled.img`
 	width: 300px;
 	filter: drop-shadow(3px 5px 1px rgb(0 0 0 / 0.4));
 `;
-
-export const Home = () => {
-	const location = useLocation();
-	const navigate = useNavigate();
-	useEffect(() => {
-		if (location.pathname === "/" || location.pathname === "/home") {
-			document
-				.getElementById("home")
-				?.scrollIntoView({ behavior: "smooth" });
-		}
-	}, [location]);
-
-	return (
-		<HomePage id="home">
-			<Content direction="row">
-				<TextContent>
-					<h1 className="Heading">Hi, I'm Tommy!</h1>
-					<div className="ShortAboutMe">
-						I'm a fullstack engineer based in Los Angeles!
-					</div>
-					<div>
-						<Button
-							variant="default"
-							onClick={() => {
-								navigate("/about");
-							}}
-						>
-							About Me
-						</Button>
-						<Button
-							variant="default"
-							onClick={() => {
-								navigate("/projects");
-							}}
-						>
-							View Projects
-						</Button>
-					</div>
-				</TextContent>
-				<SkyObjects>
-					<Sun src={sun} />
-					<Cloud src={cloud} />
-				</SkyObjects>
-			</Content>
-		</HomePage>
-	);
-};

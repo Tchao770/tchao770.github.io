@@ -5,56 +5,81 @@ import { useLocation } from "react-router";
 import styled from "styled-components";
 import { Content } from "app/components/PageContentWrapper";
 
-const AboutContainer = styled.div`
+export const About = () => {
+	const location = useLocation();
+	useEffect(() => {
+		if (location.pathname === "/about")
+			document
+				.getElementById("about")
+				?.scrollIntoView({ behavior: "smooth" });
+	}, [location]);
+
+	return (
+		<AboutContainer id="about">
+			<Content direction="row">
+				<TextSection>
+					<h1 className="AboutMeHeader">About Me</h1>
+					<div className="AboutText">
+						I'm a full stack developer based in Los Angeles,
+						passionate about learning new technologies, writing
+						code, and building websites that are appealing and
+						responsive.
+					</div>
+					<div className="AboutText">
+						In my professional career, I've been able to build a
+						website for an established real estate agency, redesign
+						a start-up's online directory and accounting software
+						developed for general contractors.
+					</div>
+					<div className="AboutText">
+						My interest in engineering/creating began and continues
+						with building LEGOs and furniture in my free time. I'm
+						also a big time gamer and enjoy learning new recipes.
+					</div>
+					<div className="AboutText">
+						Interested in creating products that delight and improve
+						everyday life.
+					</div>
+				</TextSection>
+				<ProfileImage>
+					<img className="ProfileImg" src={profileImg} />
+					<div className="overlay">
+						<div className="text">It's a me, Tommy</div>
+					</div>
+				</ProfileImage>
+			</Content>
+			<Birds src={birds} />
+		</AboutContainer>
+	);
+};
+
+const ProfileImage = styled.div`
 	position: relative;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	background: rgba(100, 155, 219, 0.18);
-	height: 100vh;
-	.TextSection {
-		text-align: left;
+	width: 100%;
+	max-width: 500px;
+	min-width: 300px;
+	&:before {
+		content: "";
+		display: block;
+		padding-top: 100%;
 	}
-
-	.AboutMeHeader {
-		font-size: 25px;
-		padding-bottom: 1rem;
-	}
-
-	.AboutWork {
-		width: 20rem;
-	}
-	.AboutFreeTime {
-		width: 20rem;
-	}
-
-	.ViewProjectButton {
-		background: #79a8e0;
-		border-radius: 35px;
-		color: white;
-		border: none;
-		cursor: pointer;
-	}
-	.container {
-		position: relative;
+	.ProfileImg {
 		width: 100%;
+		height: auto;
+		object-fit: cover;
+		border-radius: 50%;
+		transition: 0.5s ease-out;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		line-height: 100%;
 		height: 100%;
-		max-width: 500px;
-		max-height: 500px;
-		.ProfileImg {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			border-radius: 50%;
-			transition: 0.5s ease-out;
-			display: block;
-		}
-	}
-	.container:hover .overlay {
-		background-color: rgba(100, 155, 219, 0.18);
-		.text {
-			color: rgba(255, 255, 255, 1);
-		}
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 	.overlay {
 		position: absolute;
@@ -78,11 +103,50 @@ const AboutContainer = styled.div`
 		transform: translate(-50%, -50%);
 		transition: 0.5s ease;
 	}
+
+	&:hover .overlay {
+		background-color: rgba(100, 155, 219, 0.18);
+		.text {
+			color: rgba(255, 255, 255, 1);
+		}
+	}
 	@media only screen and (max-width: 800px) {
+		max-width: 500px;
 		.ProfileImg {
 			width: 100%;
 			height: 100%;
 		}
+	}
+`;
+
+const TextSection = styled.div`
+	text-align: left;
+	.AboutMeHeader {
+		font-size: 2em;
+		padding-bottom: 1rem;
+	}
+
+	.AboutText {
+		margin-top: 1em;
+		margin-bottom: 1em;
+		max-width: 30em;
+	}
+`;
+
+const AboutContainer = styled.div`
+	position: relative;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	background: rgba(100, 155, 219, 0.18);
+	height: 100vh;
+
+	.ViewProjectButton {
+		background: #79a8e0;
+		border-radius: 35px;
+		color: white;
+		border: none;
+		cursor: pointer;
 	}
 `;
 
@@ -95,42 +159,3 @@ const Birds = styled.img`
 		display: none;
 	}
 `;
-
-export const About = () => {
-	const location = useLocation();
-	useEffect(() => {
-		if (location.pathname === "/about")
-			document
-				.getElementById("about")
-				?.scrollIntoView({ behavior: "smooth" });
-	}, [location]);
-
-	return (
-		<AboutContainer id="about">
-			<Content direction="row">
-				<div className="TextSection">
-					<div className="AboutMeHeader">About Me</div>
-					<div className="AboutWork">
-						My name is Tommy and I'm a full stack developer based in
-						Los Angeles. I love learning new technologies, writing
-						elegant code, and making both appealing and responsive
-						websites.
-					</div>
-					<div className="AboutFreeTime">
-						When I'm not building websites and technologies, my
-						passion for working on something extends to my hobbies
-						as well. On my free time I enjoy cooking, playing games,
-						and building things such as LEGO or furniture.
-					</div>
-				</div>
-				<div className="container">
-					<img className="ProfileImg" src={profileImg} />
-					<div className="overlay">
-						<div className="text">It's a me, Tommy</div>
-					</div>
-				</div>
-			</Content>
-			<Birds src={birds} />
-		</AboutContainer>
-	);
-};

@@ -13,6 +13,7 @@ const ContactContainer = styled.div`
 	background-color: rgba(142, 181, 229, 0.18);
 	.header {
 		text-align: center;
+		font-size: 2em;
 	}
 `;
 
@@ -26,7 +27,7 @@ export const Contact = () => {
 	}, [location]);
 	return (
 		<ContactContainer id="contact">
-			<div className="header">Wanna connect? Send me an Email!</div>
+			<div className="header">Send me an Email!</div>
 			<ContactForm />
 		</ContactContainer>
 	);

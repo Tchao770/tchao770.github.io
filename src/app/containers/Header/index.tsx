@@ -30,7 +30,7 @@ const Nav = styled.div`
 	}
 	&.up,
 	&.down {
-		background: rgba(59, 128, 210, 0.541);
+		background: rgba(59, 127, 210, 0.349);
 		box-shadow: 0px 0px 5px black;
 		padding: 8px;
 		backdrop-filter: blur(10px);

@@ -1,31 +1,7 @@
-import { Grid } from "@mantine/core";
 import ProjectCard from "app/components/ProjectCard.tsx";
 import { useEffect } from "react";
 import { useLocation } from "react-router";
 import styled from "styled-components";
-
-const ProjectSection = styled.div`
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: rgba(121, 168, 224, 0.18);
-	h1 {
-		text-align: "center";
-	}
-`;
-
-const ProjectContainer = styled.div`
-	display: flex;
-	justify-content: space-around;
-	width: 90%;
-	max-width: 1500px;
-	@media only screen and (max-width: 800px) {
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-between;
-	}
-`;
 
 export const Projects = () => {
 	const location = useLocation();
@@ -37,7 +13,7 @@ export const Projects = () => {
 	}, [location]);
 	return (
 		<ProjectSection id="projects">
-			<h1>Some of my work</h1>
+			<h1>My work</h1>
 			<ProjectContainer>
 				{Object.keys(projectData).map((key, index) => {
 					return <ProjectCard projectData={projectData[key]} />;
@@ -46,6 +22,31 @@ export const Projects = () => {
 		</ProjectSection>
 	);
 };
+
+const ProjectSection = styled.div`
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgba(121, 168, 224, 0.18);
+	h1 {
+		text-align: "center";
+		font-size: 2em;
+	}
+`;
+
+const ProjectContainer = styled.div`
+	display: flex;
+	justify-content: space-around;
+	width: 90%;
+	max-width: 1500px;
+	@media only screen and (max-width: 800px) {
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-evenly;
+		height: 90vh;
+	}
+`;
 
 const projectData: any = {
 	DIRBuilders: {
@@ -59,13 +60,13 @@ const projectData: any = {
 		code: "https://github.com/Tchao770/Nestegg",
 		descr: "Website built and designed by me for real estate agency",
 	},
+	/*
 	TicTacToe: {
 		name: "Tic Tac Toe",
 		demo: "https://tchao.dev/Tic-Tac-Toe/",
 		code: "https://github.com/Tchao770/Tic-Tac-Toe",
 		descr: "A simple tic tac toe app that can be played between 2 people",
 	},
-	/*
 	MathforTangerines: {
 		name: "Math for Tangerines",
 		demo: "https://tchao.dev/Math-4-Tangerines/",

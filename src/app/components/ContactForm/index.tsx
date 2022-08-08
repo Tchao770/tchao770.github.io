@@ -28,7 +28,7 @@ export const ContactForm = () => {
 				id="message"
 				name="message"
 				label="Message"
-				placeholder={`I'm like "Hey, what's up? Hello"`}
+				placeholder={`Hi there...`}
 				minRows={4}
 				autosize
 				size="xl"

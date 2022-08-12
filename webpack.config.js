@@ -174,6 +174,7 @@ module.exports = {
 					? package.keywords.join(",")
 					: undefined,
 			},
+			favicon: "./assets/TC1.png"
 		}),
 		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
 		new ReactRefreshWebpackPlugin(),

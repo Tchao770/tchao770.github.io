@@ -28,7 +28,10 @@ export const Home = () => {
 					</div>
 					<div>
 						<Button
-							style={{ backgroundColor: "#508DD6" }}
+							style={{
+								backgroundColor: "#508DD6",
+								marginRight: "1em",
+							}}
 							onClick={() => {
 								navigate("/about");
 							}}

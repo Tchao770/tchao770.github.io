@@ -42,7 +42,7 @@ export const Skills = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	useEffect(() => {
-		if (location.pathname === "/" || location.pathname === "/skills") {
+		if (location.pathname === "/skills") {
 			document
 				.getElementById("skills")
 				?.scrollIntoView({ behavior: "smooth" });

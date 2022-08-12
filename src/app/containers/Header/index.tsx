@@ -31,9 +31,9 @@ const Nav = styled.div`
 	&.up,
 	&.down {
 		background: rgba(59, 127, 210, 0.349);
+		backdrop-filter: blur(10px);
 		box-shadow: 0px 0px 5px black;
 		padding: 8px;
-		backdrop-filter: blur(10px);
 		padding-left: 20px;
 	}
 `;

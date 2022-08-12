@@ -1,5 +1,6 @@
 {
 	"name": "portfolio",
+	"homepage": "https://tchao.dev",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",

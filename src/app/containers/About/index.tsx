@@ -67,7 +67,7 @@ const ProfileImage = styled.div`
 		width: 100%;
 		height: auto;
 		object-fit: cover;
-		border-radius: 50%;
+		border-radius: 15px;
 		transition: 0.5s ease-out;
 		display: block;
 		position: absolute;
@@ -86,7 +86,7 @@ const ProfileImage = styled.div`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		border-radius: 50%;
+		border-radius: 15px;
 		overflow: hidden;
 		width: 100%;
 		height: 100%;
@@ -121,15 +121,38 @@ const ProfileImage = styled.div`
 
 const TextSection = styled.div`
 	text-align: left;
+	padding-right: 5em;
 	.AboutMeHeader {
+		text-align: center;
+		position: relative;
 		font-size: 2em;
 		padding-bottom: 1rem;
+		&:before {
+			position: absolute;
+			bottom: 1px;
+			content: "";
+			background-color: #fdc435;
+			width: 20%;
+			height: 2px;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+			transition: 0.5s;
+		}
+		&:hover:before {
+			width: 30%;
+			background-color: #ffbf1e;
+		}
 	}
 
 	.AboutText {
 		margin-top: 1em;
 		margin-bottom: 1em;
 		max-width: 30em;
+	}
+	@media only screen and (max-width: 800px) {
+		padding-right: 0;
+		padding-bottom: 2rem;
 	}
 `;
 
@@ -139,7 +162,7 @@ const AboutContainer = styled.div`
 	justify-content: space-evenly;
 	align-items: center;
 	background: rgba(100, 155, 219, 0.18);
-	height: 100vh;
+	min-height: 100vh;
 
 	.ViewProjectButton {
 		background: #79a8e0;

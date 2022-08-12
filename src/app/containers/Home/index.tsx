@@ -28,7 +28,7 @@ export const Home = () => {
 					</div>
 					<div>
 						<Button
-							variant="default"
+							style={{ backgroundColor: "#508DD6" }}
 							onClick={() => {
 								navigate("/about");
 							}}
@@ -36,7 +36,7 @@ export const Home = () => {
 							About Me
 						</Button>
 						<Button
-							variant="default"
+							style={{ backgroundColor: "#508DD6" }}
 							onClick={() => {
 								navigate("/projects");
 							}}
@@ -107,4 +107,13 @@ const Sun = styled.img`
 const Cloud = styled.img`
 	width: 300px;
 	filter: drop-shadow(3px 5px 1px rgb(0 0 0 / 0.4));
+	animation: move 3s infinite;
+	@keyframes move {
+		0% {
+			transform: translatex(0);
+		}
+		50% {
+			transform: translatex(-10px);
+		}
+	}
 `;

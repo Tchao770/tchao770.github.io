@@ -6,6 +6,7 @@ import { Contact } from "./containers/Contact";
 import { Header } from "./containers/Header";
 import { Home } from "./containers/Home";
 import { Projects } from "./containers/Projects";
+import { Skills } from "./containers/Skills/Skills";
 
 export const App = () => {
 	const location = useLocation();
@@ -23,6 +24,7 @@ export const App = () => {
 			<Home />
 			<About />
 			<Projects />
+			<Skills />
 			<Contact />
 			<Routes>
 				<Route path="/" />

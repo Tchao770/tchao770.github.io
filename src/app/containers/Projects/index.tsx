@@ -16,7 +16,9 @@ export const Projects = () => {
 			<h1>My work</h1>
 			<ProjectContainer>
 				{Object.keys(projectData).map((key, index) => {
-					return <ProjectCard projectData={projectData[key]} />;
+					return (
+						<ProjectCard key={key} projectData={projectData[key]} />
+					);
 				})}
 			</ProjectContainer>
 		</ProjectSection>
@@ -24,7 +26,7 @@ export const Projects = () => {
 };
 
 const ProjectSection = styled.div`
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -32,6 +34,24 @@ const ProjectSection = styled.div`
 	h1 {
 		text-align: "center";
 		font-size: 2em;
+		padding-bottom: 1rem;
+		position: relative;
+		&:before {
+			position: absolute;
+			bottom: 1px;
+			content: "";
+			background-color: #fdc435;
+			width: 40%;
+			height: 2px;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+			transition: 0.5s;
+		}
+		&:hover:before {
+			width: 90%;
+			background-color: #ffbf1e;
+		}
 	}
 `;
 
@@ -44,7 +64,7 @@ const ProjectContainer = styled.div`
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-evenly;
-		height: 90vh;
+		height: 100%;
 	}
 `;
 
@@ -52,13 +72,32 @@ const projectData: any = {
 	DIRBuilders: {
 		name: "DIR Builders",
 		demo: "https://dirbuilders.com/search-with-map/?keyword=Boilermaker+-+Blacksmith&location=Los+Angeles&page=1&mapsearch=1&mapcenter=%257B%2522lat%2522%253A33.89919266141664%252C%2522lng%2522%253A-117.62346345703125%257D&mapbounds=%257B%2522northeast%2522%253A%257B%2522lat%2522%253A34.40944979642645%252C%2522lng%2522%253A-116.83794099609375%257D%252C%2522southwest%2522%253A%257B%2522lat%2522%253A33.38586369505393%252C%2522lng%2522%253A-118.40898591796875%257D%257D",
-		descr: "Redesigned and implemented improved search page for company website",
+		descr: `
+		An online directory web application of all registered DIR contractors in California 
+		with filter-rich searching capabilities to find the right contractors. 
+		I redesigned and implemented a new search page that utilizes the Google Maps API and Algolia's 
+		Search API, providing users with a visual of the results.
+		`,
+		technologies: [
+			"JavaScript",
+			"jQuery",
+			"BootStrap",
+			"Algolia API",
+			"CakePHP",
+			"Google Maps API",
+		],
 	},
 	Nestegg: {
 		name: "Nestegg",
 		demo: "https://ecstatic-knuth-aa1bd0.netlify.app/",
 		code: "https://github.com/Tchao770/Nestegg",
-		descr: "Website built and designed by me for real estate agency",
+		descr: `
+		A real estate agency website to establish a digital presence, exposing the company
+		to more ways of obtaining customers. I held regular sprints with my client, narrowing 
+		desired features and built the website from the ground up with React, built with Webpack,
+		and deployed via Netlify.
+		`,
+		technologies: ["React", "Webpack", "Sass", "Netlify"],
 	},
 	/*
 	TicTacToe: {

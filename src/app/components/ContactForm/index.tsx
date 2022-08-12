@@ -15,9 +15,9 @@ export const ContactForm = () => {
 				id="email"
 				type="email"
 				name="email"
-				label="Email Address"
-				placeholder="name@email.com"
-				size="xl"
+				placeholder="Email Address"
+				size="md"
+				style={{ paddingBottom: "1em" }}
 			/>
 			<ValidationError
 				prefix="Email"
@@ -27,11 +27,11 @@ export const ContactForm = () => {
 			<Textarea
 				id="message"
 				name="message"
-				label="Message"
-				placeholder={`Hi there...`}
+				placeholder={`Message`}
 				minRows={4}
 				autosize
-				size="xl"
+				size="md"
+				style={{ paddingBottom: "1em" }}
 			/>
 			<ValidationError
 				prefix="Message"
@@ -41,9 +41,9 @@ export const ContactForm = () => {
 			<Button
 				type="submit"
 				disabled={state.submitting}
-				style={{ width: "100%" }}
+				style={{ width: "100%", backgroundColor: "#508DD6" }}
 			>
-				Send
+				Send Message
 			</Button>
 		</form>
 	);
